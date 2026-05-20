@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using MiAp.Data;
 using MiAp.Endpoints;
 using MiAp.Middleware;
 
@@ -6,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+// Configure DbContext with SQLite
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Configure CORS (Cross-Origin Resource Sharing)
 builder.Services.AddCors(options =>
