@@ -45,5 +45,6 @@ app.UseCors("AllowAll");
 
 // Map Endpoints
 app.MapWeatherEndpoints();
+app.MapTaskEndpoints();
 
 app.Run();
